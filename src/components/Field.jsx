@@ -2,10 +2,10 @@ const Field = ({ label='Поле', name='поле', placeholder='Некий те
     return (
         <div className="mb-4 mx-2">
             <label 
-                className="block mb-1 "
+                className="font-medium block mb-1 text-sm"
                 htmlFor={ name }>{ label }</label>
             <input
-                className="px-2 py-1 text-gray-950 border-2 border-solid border-zinc-300 rounded placeholder:text-zinc-300 focus:outline-none focus:border-2 focus:border-solid focus:border-green-400" 
+                className="font-medium px-4 py-2 text-sm text-gray-950 border-2 border-solid border-zinc-300 rounded-md placeholder:text-sm placeholder:text-zinc-300 focus:outline-none focus:border-2 focus:border-solid focus:border-indigo-500" 
                 type="text" 
                 name={ name } 
                 placeholder={ placeholder }

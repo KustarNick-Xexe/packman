@@ -16,14 +16,19 @@ const Settings = () => {
           placeholder={'Введите количество'}
         />
         <Field 
-          label={'Количество ТС'} 
+          label={'Грузоподъемность ТС'} 
+          name={'кол-во'} 
+          placeholder={'Введите массу'}
+        />
+        <Field 
+          label={'Количество популяций'} 
           name={'кол-во'} 
           placeholder={'Введите количество'}
         />
         <Field 
-          label={'Количество ТС'} 
+          label={'Вероятность мутации'} 
           name={'кол-во'} 
-          placeholder={'Введите количество'}
+          placeholder={'Введите вероятность'}
         />
         <Button text={'Отправить'} type={'submit'}/>
       </div>
