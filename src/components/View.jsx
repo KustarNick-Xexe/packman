@@ -26,32 +26,33 @@ const View = () => {
       <hr className="w-full border-b-[2px] border-zinc-100 absolute bottom-0 left-0"/>
     </div>
       <div className="pt-4">
-       { toggleState === 1 ? 
-       <div className="flex justify-end items-center">
+        { toggleState === 1 ? 
+        <div className="flex justify-end items-center">
           <div>
-          <Map 
+            </div>
+            <Map 
               className="border-2 border-zinc-200" 
               defaultState={{ center: [54.29, 56.26], zoom: 11 }} 
-              style={{ filter: 'saturate(80%) invert(100%) grayscale(100%) ', overflow: 'hidden', borderRadius: '10px', width: '500px', height: '800px' }}
+              style={{ filter: 'grayscale(1)', overflow: 'hidden', borderRadius: '10px', width: '500px', height: '800px' }}
               options={{
                 suppressMapOpenBlock: 'false',
                 suppressYandexLogo: 'false'
-              }}/>
-          </div>
+              }}
+            />
         </div>
         :
         <div className="flex justify-end items-center">
           <div>
-            <Map 
-              className="border-2 border-zinc-200" 
-              defaultState={{ center: [54.29, 56.26], zoom: 11 }} 
-              style={{ filter: 'saturate(80%) invert(100%) grayscale(100%) ', overflow: 'hidden', borderRadius: '10px', width: '500px', height: '800px' }}
-              options={{
-                suppressMapOpenBlock: 'false',
-                suppressYandexLogo: 'false',
-                yandexMapDisablePoiInteractivity: 'false',
-              }}/>
           </div>
+          <Map 
+            className="border-2 border-zinc-200" 
+            defaultState={{ center: [54.29, 56.26], zoom: 11 }} 
+            style={{ filter: 'grayscale(1)', overflow: 'hidden', borderRadius: '10px', width: '500px', height: '800px' }}
+            options={{
+              suppressMapOpenBlock: 'false',
+              suppressYandexLogo: 'false'
+            }}
+          />
         </div>
         }
       </div>
