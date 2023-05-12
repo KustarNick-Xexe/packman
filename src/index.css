@@ -1,3 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: #E5E7EB;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #797f8a;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:active {
+    background-color: #7c3aed;
+}
+.line {
+    position: relative;
+}
+
+.line:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    top: 16px;
+    left: 12px;
+    width: 4px;
+    height: 28px;
+    background-size: 4px 28px;
+    background-color: #7c3aed;
+}

@@ -5,7 +5,7 @@ import View from './components/View';
 function App() {
 
   return (
-    <div className='bg-slate-50 p-4 flex'>
+    <div className='bg-slate-50 p-4 flex items-start'>
       <Settings />
       <View/>
     </div>
