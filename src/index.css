@@ -16,6 +16,11 @@
 ::-webkit-scrollbar-thumb:active {
     background-color: #7c3aed;
 }
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #7c3aed;
+}
+
 .line {
     position: relative;
 }
@@ -25,7 +30,7 @@
     position: absolute;
     top: 16px;
     left: 12px;
-    width: 4px;
+    width: 3px;
     height: 28px;
     background-size: 4px 28px;
     background-color: #7c3aed;

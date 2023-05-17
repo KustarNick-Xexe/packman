@@ -24,7 +24,7 @@ const RouteMap = ({ points }) => {
         {
             boundsAutoApply: true,
             routeActiveStrokeWidth: 3,
-            routeActiveStrokeColor: "#8c18ff"
+            routeActiveStrokeColor: "#7c3aed"
         }
         );
 
@@ -35,9 +35,9 @@ const RouteMap = ({ points }) => {
 
       return (
         <Map 
-            className="border-2 border-zinc-200" 
+            className="border-2 border-zinc-200 shadow-inner" 
             state={mapState}
-            style={{ filter: '', overflow: 'hidden', borderRadius: '10px', width: '500px', height: '800px' }}
+            style={{ filter: '', overflow: 'hidden', borderRadius: '10px', width: '500px', height: '600px' }}
             options={{
               suppressMapOpenBlock: 'false',
               suppressYandexLogo: 'false'
