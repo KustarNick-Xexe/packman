@@ -44,7 +44,7 @@ const View = () => {
           <RouteMap points={ points }/>
         </div>
         :
-        <div className="flex justify-between items-start">
+        <div className="flex justify-between items-start flex-wrap">
           <div className="flex items-start justify-between">
             <List />
             <Details />

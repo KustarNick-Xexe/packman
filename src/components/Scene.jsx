@@ -17,7 +17,7 @@ const Box = ({ position, dimensions, isFrigile }) => {
         <group>
             <mesh position={[position[0] + offset[0], position[1] + offset[1], position[2] + offset[2]]} ref={boxRef}>
                 <boxGeometry args={dimensions} />
-                <meshBasicMaterial color={isFrigile ? '#03d9ff' : '#0370ff'} />
+                <meshBasicMaterial color={isFrigile ? '#be9c6c' : '#a3834f'} />
             </mesh>
             <primitive object={line} position={[position[0] + offset[0], position[1] + offset[1], position[2] + offset[2]]} />
         </group>
@@ -63,9 +63,9 @@ const Scene = ({ boxes, containerDimensions }) => {
             <primitive object={arrowX} />
             <primitive object={arrowY} />
             <primitive object={arrowZ} />
-            <gridHelper args={gridSize} position={gridPosition} />
+            <gridHelper args={gridSize} position={gridPosition} divisions={40}/>
             {boxes.map((box, i) => (
-                <Box key={i} position={[box[0], box[1], box[2]]} dimensions={[box[3], box[4], box[5]]} isFrigile={box[6]} />
+                <Box key={i} position={[box[0], box[2], box[1]]} dimensions={[box[3], box[5], box[4]]} isFrigile={box[6]} />
             ))}
         </Canvas>
     );
