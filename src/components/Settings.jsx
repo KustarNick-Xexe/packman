@@ -6,9 +6,10 @@ import axios from 'axios';
 const Settings = () => {
 
     const handleClick = async () => {
-      const response = await axios.get('http//localhost:3000/pack');
+      const response = await axios.get('http://localhost:3000/pack');
       const result = await response.data;
       console.log(result);
+      alert('fewjfwnfwf');
     };
 
     return (
