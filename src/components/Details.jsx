@@ -41,51 +41,14 @@ const Details = () => {
         [ 12, 17, 0, 12, 7, 5, true ],  [ 18, 35, 0, 7, 5, 15 ]
       ];
     return (
-        <div className=' min-w-[800px] overflow-y-scroll p-3 rounded-md border-2 border-solid border-zinc-300 h-96'>
+        <div className=' min-w-[800px] min-h-[420px] overflow-y-scroll p-2 rounded-md border-2 border-solid border-zinc-300 h-96'>
             <Tittle 
                 text={'Что-то про ТС'}
                 description={'описание разлчиный деталей'}/>
             <TCRoute items={items}/>
-            <div className=' w-[720px] h-[280px] mt-8 mb-4 mx-auto rounded-md border-2 border-solid border-zinc-300'>
+            <div className=' w-[720px] h-[360px] mt-8 mb-4 mx-auto rounded-md border-2 border-solid border-zinc-300'>
                 <Scene boxes={boxes} containerDimensions={[60, 20, 60]}/>
             </div>
-            цалцозалоцаа\ааа <br/>
-            ц <br/>
-            <br/> <br/>
-            цуаауацуа <br/>
-            уа <br/>
-            цалцозалоцаацацуац <br/>
-            уа <br/>
-            уца <br/>
-            ацуацуа <br/>
-            цуа <br/>
-            уцаа <br/>
-
-            уцаап <br/>
-            уцаапцпуп <br/>
-            п <br/>
-            цацуапп <br/>
-            цуп <br/> <br/>
-
-            уцаапуцпуцпуцпц <br/>
-            уцаацуаца <br/>
-            ацуацуаа <br/> <br/>
-            ацуацуаааца <br/>
-            цалцозалоцаа <br/>
-            <br/>
-             ц <br/>
-             уцаацуацаа <br/>
-             ааа цацуаппцуа  <br/>
-             ацуацуааацу <br/>
-             ааацуа  <br/>
-             ааацуа <br/>
-             цуа ааацауца <br/>
-             уца  <br/>
-             а <br/>
-             цуауц <br/>
-              уца <br/>
-               
-               ааацауца ца
         </div>
     );
 }
