@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { YMaps } from '@pbe/react-yandex-maps';
 import List from "./List";
 import Details from "./Details";
@@ -6,12 +7,19 @@ import Details from "./Details";
 
 const View = () => {
   const [toggleState, setToggleState] = useState(1);
+  const [vehicle, setVehicle] = useState(null);
 
-  const points = [
-    [54.7431, 55.9678],
-    [52.5822, 56.4525],
-    [54.2940, 56.2609]
-  ];
+  const prices = useSelector(state => state.prices);
+  const witems = useSelector(state => state.witems);
+  const sitems = useSelector(state => state.sitems);
+
+  const handleClick = (idV) => {
+    if(toggleState === 1) {
+      setVehicle(witems.find(v => v.idV === idV))
+    } else {
+      setVehicle(sitems.find(v => v.idV === idV))
+    }
+  };
 
   return (
     <YMaps query={{ apikey: '6f6088ff-6718-41e8-ad65-b0ccbccdb63b' }}>
@@ -37,21 +45,21 @@ const View = () => {
           {toggleState === 1 ?
             <div className="flex items-start flex-nowrap">
               <div className="flex-col justify-between">
-                <List />
-                <span className="font-medium text-lg text-black">ИТОГО:<br/>10 000 рублей</span>
+                {witems?.length > 0 && <List items={ witems } onClick={ handleClick }/> }
+                {prices && <span className="font-medium text-lg text-black">ИТОГО:<br/>{prices.wp} рублей</span>}
               </div>
               <div className="flex-col justify-between">
-                <Details points={points}/>
+               { vehicle && <Details info={ vehicle }/> }
               </div>
             </div>
             :
             <div className="flex items-start flex-nowrap">
               <div className="flex-col justify-between">
-                <List />
-                <span className="font-medium text-lg text-black">ИТОГО:<br/>10 000 рублей</span>
+                {sitems?.length > 0 && <List items={ sitems } onClick={ handleClick }/> }
+                {prices && <span className="font-medium text-lg text-black">ИТОГО:<br/>{prices.sp} рублей</span>}
               </div>
               <div className="flex-col justify-between">
-                <Details points={points}/>
+              { vehicle && <Details info={ vehicle }/> }
               </div>
             </div>
           }

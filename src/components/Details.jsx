@@ -2,8 +2,32 @@ import Scene from "./Scene";
 import TCRoute from "./TCRoute";
 import Tittle from "./Tittle";
 import RouteMap from "./RouteMap";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-const Details = ({ points }) => {
+
+//[54.7431, 55.9678],
+const Details = ({ info }) => {
+    const [coords, setCoords] = useState([])
+    useEffect(() => {
+        async function fetchData() {
+            const response = await axios.get(`http://localhost:3007/api/clients`);
+            const result = response.data;
+            return result;
+        }
+
+        fetchData().then(clients => {
+            let points = [];
+            for (const client of clients) {
+                if(info.routes.includes(client.id)) {
+                    points.push(client);
+                }
+            }
+            let temp = points.map(client => [client.coordX, client.coordY]);
+            setCoords([temp]);
+        })
+    }, [])
+
     const items = ['A - Депо - г. Уфа, ул. Гильманова 69', 
         'B - ЧВК "Вагнер" - с. Янаул, ул. Красивая 7', 
         'C - ЧВК "Вагнер" - с. Янаул, ул. Красивая 7',  
@@ -44,10 +68,17 @@ const Details = ({ points }) => {
     return (
         <div className=' min-w-[800px] min-h-[615px] overflow-y-scroll p-2 rounded-md border-2 border-solid border-zinc-300 h-96'>
             <Tittle 
-                text={'Что-то про ТС'}
-                description={'описание разлчиный деталей'}/>
+                text={'Описание ТС'}
+                description={
+                    `
+                        ширина: ${info.vehicle.w}
+                        длина: ${info.vehicle.h}
+                        высота: ${info.vehicle.d}
+                        групозоподъемность: ${info.vehicle.m}
+                    `
+                }/>
             <TCRoute items={items}/>
-            <RouteMap points={points}/>
+            {/* <RouteMap points={points}/> */}
             <div className=' w-[96%] h-[400px] mt-8 mb-4 mx-auto rounded-md border-2 border-solid border-zinc-300'>
                 <Scene boxes={boxes} containerDimensions={[60, 20, 60]}/>
             </div>

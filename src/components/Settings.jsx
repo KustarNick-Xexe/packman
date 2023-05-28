@@ -36,19 +36,14 @@ const Settings = () => {
 
     for (let i = 0; i < wvehicles.length; i++) {
       const plan = resultServer.find(item => item.idVehicle === wvehicles[i]);
-      console.log(plan.plan)
-      let obj = JSON.parse(plan.plan);
-      let stringifiedArray = '[' + obj.result + ']';
-      let result = JSON.parse(stringifiedArray);
+      let result = JSON.parse(plan.plan);
       dispatch(addW(plan.idVehicle, wroutes[i], result,
         { w: plan.vehicle.width, h: plan.vehicle.length, d: plan.vehicle.height, m: plan.vehicle.weight }));
     }
 
     for (let i = 0; i < svehicles.length; i++) {
       const plan = resultServer.find(item => item.idVehicle === svehicles[i]);
-      let obj = JSON.parse(plan.plan);
-      let stringifiedArray = '[' + obj.result + ']';
-      let result = JSON.parse(stringifiedArray);
+      let result = JSON.parse(plan.plan);
       dispatch(addS(plan.idVehicle, sroutes[i], result,
         { w: plan.vehicle.width, h: plan.vehicle.length, d: plan.vehicle.height, m: plan.vehicle.weight }));
     }
