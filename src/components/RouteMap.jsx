@@ -35,9 +35,9 @@ const RouteMap = ({ points }) => {
 
       return (
         <Map 
-            className="border-2 border-zinc-200 shadow-inner mt-6" 
+            className="border-2 border-zinc-200 shadow-inner mt-6 mx-auto" 
             state={mapState}
-            style={{ filter: '', overflow: 'hidden', borderRadius: '10px', width: '100%', height: '400px' }}
+            style={{ filter: '', overflow: 'hidden', borderRadius: '10px', width: '96%', height: '600px' }}
             options={{
               suppressMapOpenBlock: 'false',
               suppressYandexLogo: 'false'

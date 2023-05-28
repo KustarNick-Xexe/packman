@@ -1,8 +1,9 @@
 import Scene from "./Scene";
 import TCRoute from "./TCRoute";
 import Tittle from "./Tittle";
+import RouteMap from "./RouteMap";
 
-const Details = () => {
+const Details = ({ points }) => {
     const items = ['A - Депо - г. Уфа, ул. Гильманова 69', 
         'B - ЧВК "Вагнер" - с. Янаул, ул. Красивая 7', 
         'C - ЧВК "Вагнер" - с. Янаул, ул. Красивая 7',  
@@ -41,12 +42,13 @@ const Details = () => {
         [ 12, 17, 0, 12, 7, 5, true ],  [ 18, 35, 0, 7, 5, 15 ]
       ];
     return (
-        <div className=' min-w-[800px] min-h-[420px] overflow-y-scroll p-2 rounded-md border-2 border-solid border-zinc-300 h-96'>
+        <div className=' min-w-[800px] min-h-[615px] overflow-y-scroll p-2 rounded-md border-2 border-solid border-zinc-300 h-96'>
             <Tittle 
                 text={'Что-то про ТС'}
                 description={'описание разлчиный деталей'}/>
             <TCRoute items={items}/>
-            <div className=' w-[720px] h-[360px] mt-8 mb-4 mx-auto rounded-md border-2 border-solid border-zinc-300'>
+            <RouteMap points={points}/>
+            <div className=' w-[96%] h-[400px] mt-8 mb-4 mx-auto rounded-md border-2 border-solid border-zinc-300'>
                 <Scene boxes={boxes} containerDimensions={[60, 20, 60]}/>
             </div>
         </div>

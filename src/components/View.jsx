@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { YMaps } from '@pbe/react-yandex-maps';
-import RouteMap from "./RouteMap";
 import List from "./List";
 import Details from "./Details";
 
@@ -16,7 +15,7 @@ const View = () => {
 
   return (
     <YMaps query={{ apikey: '6f6088ff-6718-41e8-ad65-b0ccbccdb63b' }}>
-      <div className='bg-white w-full shadow px-4 py-4 m-4 rounded-md'>
+      <div className='bg-white w-full shadow px-4 py-4 m-1 rounded-md'>
         <div className="flex relative">
           <button
             className={toggleState === 1 ? "font-medium text-gray-950 px-4 py-2 relative m-0 flex justify-center items-center" : "font-medium text-gray-950 px-4 py-2 m-0"}
@@ -36,19 +35,23 @@ const View = () => {
         </div>
         <div className="pt-4">
           {toggleState === 1 ?
-            <div className="flex items-start flex-wrap">
-              <List />
+            <div className="flex items-start flex-nowrap">
               <div className="flex-col justify-between">
-                <Details />
-                <RouteMap points={points} />
+                <List />
+                <span className="font-medium text-lg text-black">ИТОГО:<br/>10 000 рублей</span>
+              </div>
+              <div className="flex-col justify-between">
+                <Details points={points}/>
               </div>
             </div>
             :
-            <div className="flex items-start flex-wrap">
-              <List />
+            <div className="flex items-start flex-nowrap">
               <div className="flex-col justify-between">
-                <Details />
-                <RouteMap points={points} />
+                <List />
+                <span className="font-medium text-lg text-black">ИТОГО:<br/>10 000 рублей</span>
+              </div>
+              <div className="flex-col justify-between">
+                <Details points={points}/>
               </div>
             </div>
           }
