@@ -28,11 +28,11 @@ const Details = ({ info }) => {
                 }
             }
             let temp = points.map(client => [client.coordX, client.coordY]);
-            temp = [[54.73876, 55.97206], ...temp, [54.73876, 55.97206]]
+            temp = [...temp] //[54.73876, 55.97206]
             setCoords([...temp]);
         
             let itemsTemp = [];
-            const promises = temp.map(coord => {  // Use temp instead of coords
+            const promises = temp.map(coord => {
                 return axios.get(
                     `https://geocode-maps.yandex.ru/1.x/?apikey=6f6088ff-6718-41e8-ad65-b0ccbccdb63b&geocode=${coord[1]},${coord[0]}&format=json&lang=ru_RU&results=1`
                 )
@@ -40,16 +40,13 @@ const Details = ({ info }) => {
                     const data = response.data;
                     const addressComponents = data.response.GeoObjectCollection.featureMember[0].GeoObject.metaDataProperty.GeocoderMetaData.Address.Components;
         
-                    let city, street;
+                    let city;
                     addressComponents.forEach(component => {
                         if (component.kind === 'locality') {
                             city = component.name;
                         }
-                        if (component.kind === 'street') {
-                            street = component.name;
-                        }
                     });
-                    itemsTemp.push([city + " " + street]); 
+                    itemsTemp.push([city]); 
                 })
                 .catch((error) => {
                     console.log(error);

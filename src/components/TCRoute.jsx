@@ -1,10 +1,11 @@
 import '../index.css';
 
 const TCRoute = ({ items }) => {
+    const cities = ['депо в Уфе', ...items, 'депо в Уфе'];
     return (
         <div className="flex">
             <ul>
-                {items.map( (item, index) =>
+                {cities.map( (item, index) =>
                     <li 
                         key={ index }
                         className="line list-none flex items-center my-2">

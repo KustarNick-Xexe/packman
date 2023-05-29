@@ -16,10 +16,11 @@ const validationSchema = Yup.object({
   ts: Yup.number().typeError('Должно быть число').required("Поле обязательно для заполнения"),
 });
 
-const Settings = () => {
+const Settings = ({ onLoad }) => {
   const dispatch = useDispatch();
 
   const handleClick = async (values, { setSubmitting }) => {
+    onLoad(true);
     const { speed, consumption, cost, unloading, fine, ts } = values;
     const responseApi = await axios.get(`http://localhost:3007/pack?speed=${speed}&consumption=${consumption}&cost=${cost}&unloading=${unloading}&fine=${fine}&ts=${ts}`);
     const resultApi = responseApi.data;
@@ -49,6 +50,7 @@ const Settings = () => {
     }
 
     dispatch(addP(wprice, sprice));
+    onLoad(false);
     alert(wroutes);
     setSubmitting(false);
   };

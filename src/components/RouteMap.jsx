@@ -16,7 +16,7 @@ const RouteMap = ({ points }) => {
     if (ymaps) {
         const multiRoute = new ymaps.multiRouter.MultiRoute(
         {
-            referencePoints: [...points],
+            referencePoints: [[54.73876, 55.97206], ...points, [54.73876, 55.97206]],
             params: {
             results: 1
             }

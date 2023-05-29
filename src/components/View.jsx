@@ -46,7 +46,7 @@ const View = () => {
             <div className="flex items-start flex-nowrap">
               <div className="flex-col justify-between">
                 {witems?.length > 0 && <List items={ witems } onClick={ handleClick }/> }
-                {prices && <span className="font-medium text-lg text-black">ИТОГО:<br/>{prices.wp} рублей</span>}
+                {prices && <span className="font-medium text-lg text-black">ИТОГО:<br/>{Math.trunc(prices.wp)} рублей</span>}
               </div>
               <div className="flex-col justify-between">
                { vehicle && <Details info={ vehicle }/> }
@@ -56,7 +56,7 @@ const View = () => {
             <div className="flex items-start flex-nowrap">
               <div className="flex-col justify-between">
                 {sitems?.length > 0 && <List items={ sitems } onClick={ handleClick }/> }
-                {prices && <span className="font-medium text-lg text-black">ИТОГО:<br/>{prices.sp} рублей</span>}
+                {prices && <span className="font-medium text-lg text-black">ИТОГО:<br/>{Math.trunc(prices.sp)} рублей</span>}
               </div>
               <div className="flex-col justify-between">
               { vehicle && <Details info={ vehicle }/> }

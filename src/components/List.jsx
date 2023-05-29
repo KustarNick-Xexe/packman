@@ -13,23 +13,25 @@ const List = ({ items, onClick }) => {
 
     return (
         <>
-            { items &&
-            <ul className='py-2 mb-6 mr-4 rounded-md border-2 border-solid border-zinc-300'>
-                {items.map((item) => (
-                    <li
-                        className={
-                            item.idV === firstIdv ? 'px-8 pb-2 border-b-2 border-solid border-zinc-300 ' 
-                            : (item.idV === lastIdv ? 'px-8 pt-2 ' : 'px-8 py-2 border-b-2 border-solid border-zinc-300 ')
-                            +
-                            (activeItemId === item.idV ? 'bg-zinc-300' : 'bg-white')
+            {items &&
+                <ul className='py-2 mb-6 mr-4 rounded-md border-2 border-solid border-zinc-300'>
+                    {items.map((item) => (
+                        <li
+                            className={
+                                item.idV === firstIdv ? ('px-8 pb-2 border-b-2 border-solid border-zinc-300 ' +
+                                    (activeItemId === item.idV ? 'text-violet-600 font-medium' : ''))
+                                    : (item.idV === lastIdv ? ('px-8 pt-2 ' +
+                                        (activeItemId === item.idV ? 'text-violet-600 font-medium' : '')) : ('px-8 py-2 border-b-2 border-solid border-zinc-300 ')
+                                    +
+                                    (activeItemId === item.idV ? 'text-violet-600 font-medium' : ''))
                         }
-                        key={item.idV}
-                        onClick={() => handleClick(item.idV)}
+                    key={item.idV}
+                    onClick={() => handleClick(item.idV)}
                     >
                     Транспортное средство {item.idV}
-                    </li>
+                </li>
                 ))}
-            </ul>
+        </ul >
             }
         </>);
 }
