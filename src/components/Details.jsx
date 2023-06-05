@@ -3,7 +3,7 @@ import TCRoute from "./TCRoute";
 import Tittle from "./Tittle";
 import RouteMap from "./RouteMap";
 import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 
@@ -22,31 +22,28 @@ const Details = ({ info }) => {
     
         fetchData().then(async clients => {
             let points = [];
-            for (const client of clients) {
-                if (info.routes.includes(client.id)) {
-                    points.push(client);
-                }
+            for (const client of info.routes) {
+                    points.push(clients.find(item => item.id === client));
             }
             let temp = points.map(client => [client.coordX, client.coordY]);
-            temp = [...temp] //[54.73876, 55.97206]
             setCoords([...temp]);
-        
-            let itemsTemp = [];
-            const promises = temp.map(coord => {
+            
+            let itemsTemp = Array(temp.length);
+            const promises = temp.map((coord, index) => {
                 return axios.get(
                     `https://geocode-maps.yandex.ru/1.x/?apikey=6f6088ff-6718-41e8-ad65-b0ccbccdb63b&geocode=${coord[1]},${coord[0]}&format=json&lang=ru_RU&results=1`
                 )
                 .then((response) => {
                     const data = response.data;
                     const addressComponents = data.response.GeoObjectCollection.featureMember[0].GeoObject.metaDataProperty.GeocoderMetaData.Address.Components;
-        
+            
                     let city;
                     addressComponents.forEach(component => {
                         if (component.kind === 'locality') {
                             city = component.name;
                         }
                     });
-                    itemsTemp.push([city]); 
+                    itemsTemp[index] = [city]; 
                 })
                 .catch((error) => {
                     console.log(error);
@@ -59,6 +56,7 @@ const Details = ({ info }) => {
     }, [info.routes])
 
     useEffect(() => {}, [items])
+    console.log(items)
 
     const boxes = info.plan;
     return (
@@ -76,10 +74,10 @@ const Details = ({ info }) => {
             <TCRoute items={items} />
             <RouteMap points={coords}/>
             <div className=' w-[96%] h-[400px] mt-8 mb-4 mx-auto rounded-md border-2 border-solid border-zinc-300'>
-                <Scene boxes={boxes} containerDimensions={[info.vehicle.w, info.vehicle.d, info.vehicle.d]} />
+                <Scene boxes={boxes} containerDimensions={[info.vehicle.h, info.vehicle.d, info.vehicle.w]} />
             </div>
         </div>
     );
 }
 
-export default Details;
+export default React.memo(Details);
